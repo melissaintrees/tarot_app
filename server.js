@@ -1,17 +1,26 @@
 require('dotenv').config();
 
 var express = require('express');
-var app = express();
+
 var port = process.env.PORT || 9000;
-var config = require('./config');
+
+var app = express();
 
 app.use(express.static(__dirname + '/public')); // you should change this to be wherever your html files are
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-app.listen(port);
+// Set Handlebars.
+var exphbs = require("express-handlebars");
 
-//@TODO Delete below after you verify the the app is working
-app.route('/').get(function(request, response) {
-    response.json(config);
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// Import routes and give the server access to them.
+var routes = require("./controller/tarotController.js");
+
+app.use(routes);
+
+app.listen(port, function(){
+    console.log("App now listening at localhost:" + port);
 });
