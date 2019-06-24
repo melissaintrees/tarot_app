@@ -4,6 +4,7 @@ var express = require('express');
 
 var port = process.env.PORT || 9000;
 
+//intialize express in app var
 var app = express();
 
 app.use(express.static(__dirname + '/public')); // you should change this to be wherever your html files are
