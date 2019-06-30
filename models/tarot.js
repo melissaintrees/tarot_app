@@ -1,13 +1,22 @@
 // Import the ORM to create functions that will interact with the database.
-var orm = require("../configuration/orm.js");
+const orm = require("../configuration/orm.js");
 
-var tarot = {
+const tarot = {
     all: function(cb) {
         orm.all("cards", function(res) {
             cb(res);
         });
     },
-    wands: "4"
+    findOne: function(cb) {
+        orm.findOne("cards", function(res) {
+            cb(res);
+        });
+    },
+    create: function(cols, vals, cb) {
+        orm.create("cards", cols, vals, function(res){
+            cb(res);
+        })
+    }
 };
 
 // Export the database functions for the controller (catsController.js).

@@ -11,6 +11,7 @@ CREATE TABLE `cards` (
   `meaning_up` varchar(255) NOT NULL,
   `meaning_down` varchar(255) NOT NULL,
   `arcana_type` varchar(255) NOT NULL,
+  `img_url` varchar(255) NOT NULL,
   PRIMARY KEY (`card_value`)
 );
 

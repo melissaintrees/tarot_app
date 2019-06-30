@@ -1,3 +1,61 @@
 .list-group-item {
   line-height: 2.5;
 }
+.card-img-overlay {
+  transform: translateY(13rem);
+  transition: transform .18s ease-in;
+  background-color: black;
+  display: none;
+}
+
+.card-img-overlay .card-text {
+  opacity: 0;
+  transform: translateY(-6rem);
+  transition: opacity .05s ease-in, transform .25s ease-in;
+}
+
+.card {
+  overflow: hidden;
+}
+
+.card-title {
+  font-size: 20px;
+}
+
+.card-text {
+  font-size: 15px;
+}
+.card:hover {
+  background-color: #345;
+
+}
+.card:hover .card-img {
+  mix-blend-mode: overlay;
+}
+
+.card:hover .card-img-overlay {
+  transform: translateY(0);
+  transition: transform .25s ease-out;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  width:275px;
+  height: 431px;
+
+}
+
+.card:hover .card-text {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity .5s ease-out, transform .2s ease-out;
+}
+
+.card-img-overlay .btn {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+.card:hover .btn {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity .7s ease-out, transform .35s ease-out;
+}

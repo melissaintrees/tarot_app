@@ -1,10 +1,20 @@
 // Import MySQL connection.
-var connection = require("../config.js");
+const connection = require("../config.js");
 
-var orm = {
+const orm = {
     all: function (tableInput, cb) {
-        var queryString = "SELECT * FROM " + tableInput + ";";
+        let queryString = "SELECT * FROM " + tableInput + ";";
 
+        console.log(queryString);
+        connection.query(queryString, function (err, result) {
+            if (err) {
+                throw err;
+            }
+            cb(result);
+        });
+    },
+    create: function (table, cols, vals, cb){
+        let queryString = "INSERT INTO " + table + " (" + cols.toString() + ") VALUES ('test')";
         console.log(queryString);
         connection.query(queryString, function (err, result) {
             if (err) {
